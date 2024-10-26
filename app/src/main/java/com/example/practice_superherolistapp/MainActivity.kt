@@ -12,8 +12,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,9 +38,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Practice_SuperheroListAppTheme {
-                Surface(modifier = Modifier.fillMaxSize()) {
-
-
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    SuperHeroCardList(SuperHeroRepository.superHeroes, Modifier.padding(innerPadding))
                 }
             }
         }
@@ -51,7 +54,8 @@ fun SuperHeroCard(superHero: SuperHero, modifier: Modifier = Modifier) {
             .padding(dimensionResource(R.dimen.padding_medium))
             .fillMaxWidth()
         ) {
-            Column {
+            Column(modifier = Modifier
+                .width(256.dp)) {
                 Text(
                     text = stringResource(superHero.nameRes),
                     style = MaterialTheme.typography.labelMedium
@@ -74,6 +78,16 @@ fun SuperHeroCard(superHero: SuperHero, modifier: Modifier = Modifier) {
     }
 }
 
+@Composable
+fun SuperHeroCardList(superHeroes: List<SuperHero>, modifier: Modifier = Modifier){
+    LazyColumn(modifier = modifier) {
+        items(superHeroes) { superHero ->
+            SuperHeroCard(
+                superHero,
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_small)))
+        }
+    }
+}
 
 @Preview(
     showBackground = true,
@@ -87,6 +101,19 @@ fun SuperHeroCardPreview(){
                 superHero = SuperHeroRepository.superHeroes[0],
                 modifier = Modifier.padding(dimensionResource(R.dimen.padding_medium))
             )
+        }
+    }
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun SuperHeroCardListPreview(){
+    Practice_SuperheroListAppTheme {
+        Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+            SuperHeroCardList(SuperHeroRepository.superHeroes, Modifier.padding(innerPadding))
         }
     }
 }

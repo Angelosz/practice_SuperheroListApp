@@ -1,6 +1,5 @@
 package com.example.practice_superherolistapp.ui.theme
 
-import androidx.compose.material3.Text
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
@@ -10,15 +9,17 @@ import androidx.compose.ui.unit.sp
 import com.example.practice_superherolistapp.R
 
 val Cabin = FontFamily(
-    Font(R.font.cabin_regular, FontWeight.Normal),
+    Font(R.font.cabin_regular),
     Font(R.font.cabin_bold, FontWeight.Bold)
 )
+
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Normal,
-        fontSize = 30.sp
+        fontSize = 24.sp
     ),
     displayMedium = TextStyle(
         fontFamily = Cabin,
@@ -28,17 +29,17 @@ val Typography = Typography(
     displaySmall = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Bold,
-        fontSize = 20.sp
+        fontSize = 16.sp
     ),
     labelSmall = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Normal,
-        fontSize = 14.sp
+        fontSize = 16.sp
     ),
     labelMedium = TextStyle(
         fontFamily = Cabin,
         fontWeight = FontWeight.Bold,
-        fontSize = 16.sp
+        fontSize = 20.sp
     ),
     bodyLarge = TextStyle(
         fontFamily = Cabin,

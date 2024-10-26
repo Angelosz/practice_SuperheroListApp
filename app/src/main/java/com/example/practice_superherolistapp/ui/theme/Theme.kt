@@ -107,6 +107,7 @@ fun Practice_SuperheroListAppTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = Shapes,
         content = content
     )
 }
